@@ -9,6 +9,10 @@
 ```shell
 docker-compose up -d
 ```
+to be able to migrate database and seed fake data
+```shell
+docker-compose exec bus-app php artisan migrate --seed
+```
 after that, you can simply open desired browser and type
 
 http://localhost
