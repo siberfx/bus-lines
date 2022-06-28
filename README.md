@@ -9,6 +9,11 @@
 ```shell
 docker-compose up -d
 ```
+installing packages of the laravel
+```shell
+docker-compose exec bus-app php composer install
+```
+
 to be able to migrate database and seed fake data
 ```shell
 docker-compose exec bus-app php artisan migrate --seed
