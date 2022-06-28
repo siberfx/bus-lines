@@ -3,6 +3,11 @@
 ### Requirements 
 #### You must have installed docker & docker-compose to be able to make it run with docker.  
 
+### Tech Stacks:
+- Php 8.1 
+- composer
+- Docker
+- Bootstrap
 
 ## Installation
 
