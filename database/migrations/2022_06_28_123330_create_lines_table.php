@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('lines', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id');
             $table->string('name');
             $table->text('description')->nullable();
         });

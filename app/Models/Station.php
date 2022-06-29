@@ -16,6 +16,7 @@ class Station extends Model
     protected $table = 'stations';
 
     protected $fillable = [
+        'name',
         'line_id',
         'arrival_to_next_station',
         'line_order',

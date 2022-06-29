@@ -21,6 +21,7 @@ namespace App\Models{
  * @property string|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Line[] $lines
  * @property-read int|null $lines_count
+ * @method static \Database\Factories\CompanyFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company query()
@@ -29,7 +30,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperCompany {}
 }
@@ -39,17 +39,20 @@ namespace App\Models{
  * App\Models\Line
  *
  * @property int $id
+ * @property int $company_id
  * @property string $name
  * @property string|null $description
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Company[] $companies
- * @property-read int|null $companies_count
+ * @property-read \App\Models\Company|null $company
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Station[] $stations
+ * @property-read int|null $stations_count
+ * @method static \Database\Factories\LineFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Line newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Line newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Line query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Line whereCompanyId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Line whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Line whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Line whereName($value)
- * @mixin \Eloquent
  */
 	class IdeHelperLine {}
 }
@@ -59,6 +62,7 @@ namespace App\Models{
  * App\Models\Station
  *
  * @property int $id
+ * @property string $name
  * @property int $line_id
  * @property int|null $arrival_to_next_station
  * @property int|null $line_order
@@ -76,9 +80,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Station whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Station whereLineId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Station whereLineOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Station whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Station whereTransferToLineId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Station whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperStation {}
 }
@@ -111,7 +115,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperUser {}
 }

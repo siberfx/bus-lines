@@ -2,84 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Line;
+use App\Models\Station;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class LineController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $lines = Line::with('company')->get();
+        $stations = Station::with('lines')->get();
+
+        return view('create-line', compact('lines', 'stations'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        Line::create($request->all());
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Line  $line
-     * @return \Illuminate\Http\Response
-     */
     public function show(Line $line)
     {
-        //
+        $line->load(['stations', 'company']);
+
+        return view('line-stations', compact('line'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Line  $line
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Line $line)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Line  $line
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Line $line)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Line  $line
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Line $line)
-    {
-        //
-    }
 }

@@ -15,6 +15,7 @@ return new class extends Migration {
     {
         Schema::create('stations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->unsignedBigInteger('line_id');
             $table->integer('arrival_to_next_station')->nullable()->default(Station::DEFAULT_TIME_ARRIVAL);
             $table->tinyInteger('line_order')->nullable()->default(Station::DEFAULT_LINE_ORDER);
